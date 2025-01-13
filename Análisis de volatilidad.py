@@ -12,7 +12,7 @@ from statsmodels.stats.diagnostic import acorr_ljungbox
 import os
 
 
-crude_oil = pd.read_csv('ac-vol-all-nyu/CRUDEOIL_COM.csv').set_index('date')
+crude_oil = pd.read_csv('CRUDEOIL_COM.csv').set_index('date')
 crude_oil.head()
 
 fig = px.line(crude_oil, x = crude_oil.index, y = 'vol', title='Precios diarios del petróleo crudo\n', template = "plotly_dark")
