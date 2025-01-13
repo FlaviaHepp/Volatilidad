@@ -1,8 +1,3 @@
-"""
-Análisis de volatilidad GJR-GARCH en distintas clases de activos 1/3/1990 - 6/9/2023 Fuente: NYU V Labs. El modelo GJR-GARCH, al igual 
-que el modelo GARCH, captura otros hechos estilizados en series temporales financieras, como la agrupación de volatilidad. En 21 clases 
-de activos o sectores diferentes de los mercados financieros de EE. UU. Cada archivo CSV representa la volatilidad de cierre diario de una 
-determinada clase de activos a lo largo del tiempo."""
 
 import numpy as np 
 import pandas as pd 
@@ -28,7 +23,8 @@ sm.graphics.tsa.plot_acf(crude_oil, title = 'Autocorrelación del precio del pet
 sm.graphics.tsa.plot_pacf(crude_oil, title = 'Autocorrelación parcial del precio del petróleo crudo\n', lags = 50, ax = ax[1])
 plt.show()
 
-#Dado que el fondo ACF está decayendo lentamente, indica la presencia de tendencias en los datos. Eliminemos la tendencia mediante el método de diferenciación. A continuación se muestra el primer gráfico de diferenciación.
+#Dado que el fondo ACF está decayendo lentamente, indica la presencia de tendencias en los datos. Eliminemos la tendencia mediante el método de diferenciación. A continuación se muestra el 
+#primer gráfico de diferenciación.
 
 # Gráfico de la primera diferenciación del precio del petróleo crudo
 
@@ -156,7 +152,7 @@ garch11_fit.std_resid
 # Pruebas de diagnóstico para el modelo GARCH(1,1) con ruido blanco normal
 print("GARCH(1,1) Modelo con ruido blanco normal\n")
 
-# Ljung-Box test and the Box-Pierce test
+# Prueba de Ljung-Box y prueba de Box-Pierce
 print("Pruebas Ljung-Box y Box-Pierce sobre residuos estandarizados")
 print(acorr_ljungbox(garch11_fit.std_resid, boxpierce=True))
 
