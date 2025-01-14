@@ -32,7 +32,7 @@ crude_oil_first_diff = crude_oil.diff().dropna()
 fig = px.line(crude_oil_first_diff, x = crude_oil_first_diff.index, y = 'vol', title = 'Primera diferencia del precio del petróleo crudo\n', template = "plotly_dark")
 fig.show()
 
-#still we can see the volatility after doing the first differencing of the dataset. Let's try the difference of log of crude oil prices.
+#Aún podemos ver la volatilidad después de hacer la primera diferenciación del conjunto de datos. Probemos con la diferencia de logaritmos de los precios del petróleo crudo.
 
 crude_oil_log = np.log(crude_oil)
 fig = px.line(crude_oil_log, x = crude_oil_log.index, y = 'vol', title = 'Registro del precio del petróleo crudo\n', template = "plotly_dark")
@@ -45,24 +45,25 @@ crude_oil_log_first_diff = np.log(crude_oil).diff().dropna()
 fig = px.line(crude_oil_log_first_diff, x = crude_oil_log_first_diff.index, y = 'vol', title = 'Registro de primera diferencia del precio del petróleo crudo\n', template = "plotly_dark")
 fig.show()
 
-#En general, los datos ahora parecen tener una variación más estable que antes. Se puede considerar la diferencia logarítmica para eliminar la 
-# tendencia del conjunto de datos. Ahora revisemos nuevamente los gráficos de acf y pacf para ver la diferencia de logaritmos de los precios del petróleo crudo.
+#En general, los datos ahora parecen tener una variación más estable que antes. Se puede considerar la diferencia logarítmica para eliminar la # tendencia del conjunto de datos. Ahora 
+#revisemos nuevamente los gráficos de acf y pacf para ver la diferencia de logaritmos de los precios del petróleo crudo.
 
 fig, ax = plt.subplots(2, 1, figsize = (15,15))
 sm.graphics.tsa.plot_acf(crude_oil_log_first_diff, title = 'Diferencia del logaritmo del precio del petróleo crudo: autocorrelación\n', lags = 50, ax = ax[0])
 sm.graphics.tsa.plot_pacf(crude_oil_log_first_diff, title = 'Diferencia del logaritmo del precio del petróleo crudo: autocorrelación parcial\n', lags = 50, ax = ax[1])
 plt.show()
 
-#A partir de los gráficos ACF y PACF anteriores de la diferencia del logaritmo de los precios del petróleo crudo, se observa que no existe una correlación serial presente para la diferencia del logaritmo de los precios del petróleo crudo. Ahora, después de la diferencia logarítmica, los datos podrían haberse convertido en series temporales de ruido blanco. Comprobemos algunas estadísticas básicas para estos datos.
+#A partir de los gráficos ACF y PACF anteriores de la diferencia del logaritmo de los precios del petróleo crudo, se observa que no existe una correlación serial presente para la diferencia 
+#del logaritmo de los precios del petróleo crudo. Ahora, después de la diferencia logarítmica, los datos podrían haberse convertido en series temporales de ruido blanco. Comprobemos algunas 
+#estadísticas básicas para estos datos.
 
 crude_oil_log_first_diff.mean()
 
 crude_oil_log_first_diff.std()
 
-#En el gráfico anterior hemos observado que la varianza es estable para la diferencia del logaritmo de los precios del petróleo crudo, y además 
-# la media es casi cero. Estas dos observaciones son suficientes para afirmar que los datos ahora se han convertido en datos de series temporales 
-# de ruido blanco. Dado que los datos son ruido blanco normal, los datos no siguen ningún patrón. Sin embargo, hagamos un análisis más detallado 
-# construyendo modelos ARIMA.
+#En el gráfico anterior hemos observado que la varianza es estable para la diferencia del logaritmo de los precios del petróleo crudo, y además la media es casi cero. Estas dos observaciones 
+#son suficientes para afirmar que los datos ahora se han convertido en datos de series temporales # de ruido blanco. Dado que los datos son ruido blanco normal, los datos no siguen ningún 
+#patrón. Sin embargo, hagamos un análisis más detallado # construyendo modelos ARIMA.
 
 # Selección eficiente del modelo ARIMA
 mod_can_auto = auto_arima(
