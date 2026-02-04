@@ -93,7 +93,7 @@ Los resultados validan la correcta especificación del modelo para capturar la v
 - El modelo GARCH(1,1) captura correctamente la agrupación de volatilidad.
 - Los diagnósticos estadísticos validan la especificación del modelo.
 
-#📚 Aplicaciones
+# 📚Aplicaciones
 
 - Gestión de riesgo financiero
 - Modelado de commodities
@@ -106,7 +106,7 @@ Los resultados validan la correcta especificación del modelo para capturar la v
 Este proyecto tiene fines académicos y demostrativos.
 No constituye asesoramiento financiero ni recomendaciones de inversión.
 
-👤 Autor
+# 👤Autor
 
 Flavia Hepp
 Data Science en formación · Econometría · Finanzas Cuantitativas
